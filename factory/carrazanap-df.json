@@ -1,0 +1,15 @@
+{
+	"name": "carrazanap-df",
+	"properties": {
+		"trustModeClaimForMi": {
+			"value": "Disabled",
+			"editable": true
+		}
+	},
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "fafff672-6829-42f1-a44d-9b2f3ba4eaef",
+		"tenantId": "8a335245-907f-4070-bd85-d30deea2b75a"
+	}
+}

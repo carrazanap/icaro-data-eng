@@ -1,0 +1,153 @@
+{
+	"name": "p_CopiaPorFecha",
+	"properties": {
+		"activities": [
+			{
+				"name": "Set_Anio",
+				"type": "SetVariable",
+				"dependsOn": [],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "anio",
+					"value": {
+						"value": "@formatDateTime(pipeline().parameters.fecha, 'yyyy')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set_Mes",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set_Anio",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "mes",
+					"value": {
+						"value": "@formatDateTime(pipeline().parameters.fecha, 'MM')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set_Dia",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Set_Mes",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "dia",
+					"value": {
+						"value": "@formatDateTime(pipeline().parameters.fecha, 'dd')",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Copy data1",
+				"type": "Copy",
+				"dependsOn": [
+					{
+						"activity": "Set_Dia",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "DS_ADLS_Producto_CSV",
+						"type": "DatasetReference"
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "DS_ADLS_Parameters_JSON",
+						"type": "DatasetReference",
+						"parameters": {
+							"p_filename": {
+								"value": "@concat('resultado_', variables('anio'), variables('mes'), variables('dia'), '.json')",
+								"type": "Expression"
+							}
+						}
+					}
+				]
+			}
+		],
+		"parameters": {
+			"fecha": {
+				"type": "string",
+				"defaultValue": "2026-04-21"
+			}
+		},
+		"variables": {
+			"anio": {
+				"type": "String"
+			},
+			"mes": {
+				"type": "String"
+			},
+			"dia": {
+				"type": "String"
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-01T20:21:13Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}

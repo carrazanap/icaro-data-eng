@@ -1,0 +1,29 @@
+{
+	"name": "DS_ADLS_Parameters_JSON",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_ADLS_Storage",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"p_filename": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "Json",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobStorageLocation",
+				"fileName": {
+					"value": "@dataset().p_filename",
+					"type": "Expression"
+				},
+				"folderPath": "parameters",
+				"container": "adf-output"
+			}
+		},
+		"schema": {}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

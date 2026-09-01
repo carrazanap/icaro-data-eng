@@ -1,0 +1,37 @@
+{
+	"name": "DS_SQL_Product",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "LS_SQL_Database",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "id_producto",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "nombre",
+				"type": "varchar"
+			},
+			{
+				"name": "categoria",
+				"type": "varchar"
+			},
+			{
+				"name": "precio",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 2
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Producto"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

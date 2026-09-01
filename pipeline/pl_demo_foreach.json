@@ -1,0 +1,52 @@
+{
+	"name": "pl_demo_foreach",
+	"properties": {
+		"activities": [
+			{
+				"name": "Iterar_Tablas",
+				"type": "ForEach",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"items": {
+						"value": "@pipeline().parameters.config_proceso.tablas",
+						"type": "Expression"
+					},
+					"isSequential": true,
+					"activities": [
+						{
+							"name": "Procesar_Tabla",
+							"type": "Wait",
+							"dependsOn": [],
+							"userProperties": [
+								{
+									"name": "TablaActual",
+									"value": "@item()"
+								}
+							],
+							"typeProperties": {
+								"waitTimeInSeconds": 1
+							}
+						}
+					]
+				}
+			}
+		],
+		"parameters": {
+			"config_proceso": {
+				"type": "object",
+				"defaultValue": {
+					"proceso": "ingesta_diaria",
+					"tablas": [
+						"clientes",
+						"productos",
+						"ventas"
+					]
+				}
+			}
+		},
+		"annotations": [],
+		"lastPublishTime": "2026-09-01T20:52:38Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
