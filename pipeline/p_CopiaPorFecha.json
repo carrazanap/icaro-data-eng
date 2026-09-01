@@ -68,7 +68,7 @@
 				}
 			},
 			{
-				"name": "Copy data json",
+				"name": "Copy data json 2",
 				"type": "Copy",
 				"dependsOn": [
 					{
