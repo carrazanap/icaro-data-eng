@@ -1,0 +1,195 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "carrazanap-df"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureBlobStorage1'"
+		},
+		"AzureSqlDatabase1_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'AzureSqlDatabase1'"
+		},
+		"LS_ADLS_Storage_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'LS_ADLS_Storage'"
+		},
+		"LS_AzureDatabricks_accessToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accessToken' of 'LS_AzureDatabricks'"
+		},
+		"LS_SQL_Database_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'LS_SQL_Database'"
+		},
+		"azure_blob_storage_icaro_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'azure_blob_storage_icaro'"
+		},
+		"azure_sql_icaro_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'azure_sql_icaro'"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "icarode.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "database-icaro"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "CloudSA9f1eca4a"
+		},
+		"LS_AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"type": "string",
+			"defaultValue": "0901-210838-kj3e8lnt"
+		},
+		"LS_Rest_PokeAPI_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://pokeapi.co/api/v2/"
+		},
+		"LS_SQL_Database_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "icarode.database.windows.net"
+		},
+		"LS_SQL_Database_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "database-icaro"
+		},
+		"LS_SQL_Database_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "CloudSA9f1eca4a"
+		},
+		"azure_sql_icaro_properties_typeProperties_server": {
+			"type": "string",
+			"defaultValue": "icarode.database.windows.net"
+		},
+		"azure_sql_icaro_properties_typeProperties_database": {
+			"type": "string",
+			"defaultValue": "database-icaro"
+		},
+		"azure_sql_icaro_properties_typeProperties_userName": {
+			"type": "string",
+			"defaultValue": "CloudSA9f1eca4a"
+		},
+		"Trigger_Evento_VentasBlob_properties_typeProperties_scope": {
+			"type": "string",
+			"defaultValue": "/subscriptions/f6ef0e8d-2790-4ade-9f03-02076e23bb27/resourceGroups/miGrupoDeRecursos/providers/Microsoft.Storage/storageAccounts/icarostorage"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "carrazanap-df_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"AzureBlobStorage1_connectionString": {
+						"value": "[parameters('AzureBlobStorage1_connectionString')]"
+					},
+					"AzureSqlDatabase1_password": {
+						"value": "[parameters('AzureSqlDatabase1_password')]"
+					},
+					"LS_ADLS_Storage_connectionString": {
+						"value": "[parameters('LS_ADLS_Storage_connectionString')]"
+					},
+					"LS_AzureDatabricks_accessToken": {
+						"value": "[parameters('LS_AzureDatabricks_accessToken')]"
+					},
+					"LS_SQL_Database_password": {
+						"value": "[parameters('LS_SQL_Database_password')]"
+					},
+					"azure_blob_storage_icaro_connectionString": {
+						"value": "[parameters('azure_blob_storage_icaro_connectionString')]"
+					},
+					"azure_sql_icaro_password": {
+						"value": "[parameters('azure_sql_icaro_password')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_server": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_server')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_database": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_database')]"
+					},
+					"AzureSqlDatabase1_properties_typeProperties_userName": {
+						"value": "[parameters('AzureSqlDatabase1_properties_typeProperties_userName')]"
+					},
+					"LS_AzureDatabricks_properties_typeProperties_existingClusterId": {
+						"value": "[parameters('LS_AzureDatabricks_properties_typeProperties_existingClusterId')]"
+					},
+					"LS_Rest_PokeAPI_properties_typeProperties_url": {
+						"value": "[parameters('LS_Rest_PokeAPI_properties_typeProperties_url')]"
+					},
+					"LS_SQL_Database_properties_typeProperties_server": {
+						"value": "[parameters('LS_SQL_Database_properties_typeProperties_server')]"
+					},
+					"LS_SQL_Database_properties_typeProperties_database": {
+						"value": "[parameters('LS_SQL_Database_properties_typeProperties_database')]"
+					},
+					"LS_SQL_Database_properties_typeProperties_userName": {
+						"value": "[parameters('LS_SQL_Database_properties_typeProperties_userName')]"
+					},
+					"azure_sql_icaro_properties_typeProperties_server": {
+						"value": "[parameters('azure_sql_icaro_properties_typeProperties_server')]"
+					},
+					"azure_sql_icaro_properties_typeProperties_database": {
+						"value": "[parameters('azure_sql_icaro_properties_typeProperties_database')]"
+					},
+					"azure_sql_icaro_properties_typeProperties_userName": {
+						"value": "[parameters('azure_sql_icaro_properties_typeProperties_userName')]"
+					},
+					"Trigger_Evento_VentasBlob_properties_typeProperties_scope": {
+						"value": "[parameters('Trigger_Evento_VentasBlob_properties_typeProperties_scope')]"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "carrazanap-df_ArmTemplate_1",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2024-03-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_1.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'carrazanap-df_ArmTemplate_0')]"
+			]
+		}
+	]
+}

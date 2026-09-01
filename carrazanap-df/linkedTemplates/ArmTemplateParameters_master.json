@@ -1,0 +1,72 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "carrazanap-df"
+		},
+		"AzureBlobStorage1_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_password": {
+			"value": ""
+		},
+		"LS_ADLS_Storage_connectionString": {
+			"value": ""
+		},
+		"LS_AzureDatabricks_accessToken": {
+			"value": ""
+		},
+		"LS_SQL_Database_password": {
+			"value": ""
+		},
+		"azure_blob_storage_icaro_connectionString": {
+			"value": ""
+		},
+		"azure_sql_icaro_password": {
+			"value": ""
+		},
+		"AzureSqlDatabase1_properties_typeProperties_server": {
+			"value": "icarode.database.windows.net"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_database": {
+			"value": "database-icaro"
+		},
+		"AzureSqlDatabase1_properties_typeProperties_userName": {
+			"value": "CloudSA9f1eca4a"
+		},
+		"LS_AzureDatabricks_properties_typeProperties_existingClusterId": {
+			"value": "0901-210838-kj3e8lnt"
+		},
+		"LS_Rest_PokeAPI_properties_typeProperties_url": {
+			"value": "https://pokeapi.co/api/v2/"
+		},
+		"LS_SQL_Database_properties_typeProperties_server": {
+			"value": "icarode.database.windows.net"
+		},
+		"LS_SQL_Database_properties_typeProperties_database": {
+			"value": "database-icaro"
+		},
+		"LS_SQL_Database_properties_typeProperties_userName": {
+			"value": "CloudSA9f1eca4a"
+		},
+		"azure_sql_icaro_properties_typeProperties_server": {
+			"value": "icarode.database.windows.net"
+		},
+		"azure_sql_icaro_properties_typeProperties_database": {
+			"value": "database-icaro"
+		},
+		"azure_sql_icaro_properties_typeProperties_userName": {
+			"value": "CloudSA9f1eca4a"
+		},
+		"Trigger_Evento_VentasBlob_properties_typeProperties_scope": {
+			"value": "/subscriptions/f6ef0e8d-2790-4ade-9f03-02076e23bb27/resourceGroups/miGrupoDeRecursos/providers/Microsoft.Storage/storageAccounts/icarostorage"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
