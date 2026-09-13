@@ -14,7 +14,7 @@
 		"type": "RestResource",
 		"typeProperties": {
 			"relativeUrl": {
-				"value": "@concat('pokemon/', dataset().PokemonId)",
+				"value": "@concat('pokemon/', dataset().PokemonId, '/')",
 				"type": "Expression"
 			}
 		},

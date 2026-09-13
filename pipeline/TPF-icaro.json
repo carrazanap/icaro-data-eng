@@ -84,14 +84,6 @@
 				}
 			},
 			{
-				"name": "ForEach1",
-				"type": "ForEach",
-				"dependsOn": [],
-				"typeProperties": {
-					"isSequential": true
-				}
-			},
-			{
 				"name": "ForEach",
 				"type": "ForEach",
 				"dependsOn": [],
@@ -127,7 +119,8 @@
 								"sink": {
 									"type": "JsonSink",
 									"storeSettings": {
-										"type": "AzureBlobStorageWriteSettings"
+										"type": "AzureBlobStorageWriteSettings",
+										"copyBehavior": "MergeFiles"
 									},
 									"formatSettings": {
 										"type": "JsonWriteSettings"
