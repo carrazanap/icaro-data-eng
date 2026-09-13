@@ -385,7 +385,7 @@
 						"type": "AzureBlobStorageLocation",
 						"fileName": "pokemon.json",
 						"folderPath": "pokeapi",
-						"container": "adf-output"
+						"container": "tpf-medallion-data"
 					}
 				},
 				"schema": {}
@@ -461,10 +461,18 @@
 					"referenceName": "LS_Rest_PokeAPI",
 					"type": "LinkedServiceReference"
 				},
+				"parameters": {
+					"PokemonId": {
+						"type": "string"
+					}
+				},
 				"annotations": [],
 				"type": "RestResource",
 				"typeProperties": {
-					"relativeUrl": "pokemon?limit=10"
+					"relativeUrl": {
+						"value": "@concat('pokemon/', dataset().PokemonId)",
+						"type": "Expression"
+					}
 				},
 				"schema": []
 			},
