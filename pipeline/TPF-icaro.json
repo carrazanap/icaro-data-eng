@@ -28,7 +28,13 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"notebookPath": "/Users/carrazanap@gmail.com/icaro-data-eng/datatabricks/01_Bronze_Ingesta"
+					"notebookPath": "/Users/carrazanap@gmail.com/icaro-data-eng/datatabricks/01_Bronze_Ingesta",
+					"baseParameters": {
+						"storage_key": {
+							"value": "@pipeline().parameters.storage_key",
+							"type": "Expression"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "LS_AzureDatabricks",
@@ -188,6 +194,11 @@
 				]
 			}
 		],
+		"parameters": {
+			"storage_key": {
+				"type": "string"
+			}
+		},
 		"variables": {
 			"IdList": {
 				"type": "Array",
