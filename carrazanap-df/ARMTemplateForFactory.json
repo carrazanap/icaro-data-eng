@@ -146,6 +146,9 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
+				"folder": {
+					"name": "CLASE 6"
+				},
 				"annotations": [],
 				"lastPublishTime": "2026-08-27T15:35:23Z"
 			},
@@ -303,6 +306,9 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
+				"folder": {
+					"name": "CLASE 6"
+				},
 				"annotations": [],
 				"lastPublishTime": "2026-08-27T23:25:44Z"
 			},
@@ -423,6 +429,9 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
+				"folder": {
+					"name": "CLASE 6"
+				},
 				"annotations": [],
 				"lastPublishTime": "2026-08-27T17:14:00Z"
 			},
@@ -503,7 +512,7 @@
 						}
 					},
 					{
-						"name": "Copy data1",
+						"name": "Copy data json 2",
 						"type": "Copy",
 						"dependsOn": [
 							{
@@ -571,7 +580,7 @@
 				"parameters": {
 					"fecha": {
 						"type": "string",
-						"defaultValue": "2026-04-21"
+						"defaultValue": "2026-08-30"
 					}
 				},
 				"variables": {
@@ -584,6 +593,9 @@
 					"dia": {
 						"type": "String"
 					}
+				},
+				"folder": {
+					"name": "CLASE 7"
 				},
 				"annotations": [],
 				"lastPublishTime": "2026-09-01T20:21:13Z"
@@ -784,6 +796,9 @@
 						"type": "String"
 					}
 				},
+				"folder": {
+					"name": "CLASE 7"
+				},
 				"annotations": [],
 				"lastPublishTime": "2026-09-01T20:42:02Z"
 			},
@@ -800,7 +815,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Copy Copy_Blob_To_SQL",
+						"name": "Copy_Blob_To_SQL",
 						"type": "Copy",
 						"dependsOn": [],
 						"policy": {
@@ -931,6 +946,9 @@
 				"policy": {
 					"elapsedTimeMetric": {}
 				},
+				"folder": {
+					"name": "CLASE 7"
+				},
 				"annotations": [],
 				"lastPublishTime": "2026-08-25T21:02:06Z"
 			},
@@ -990,6 +1008,9 @@
 							]
 						}
 					}
+				},
+				"folder": {
+					"name": "CLASE 7"
 				},
 				"annotations": [],
 				"lastPublishTime": "2026-09-01T20:52:38Z"
