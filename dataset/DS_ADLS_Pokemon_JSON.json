@@ -12,7 +12,7 @@
 				"type": "AzureBlobStorageLocation",
 				"fileName": "pokemon.json",
 				"folderPath": "pokeapi",
-				"container": "adf-output"
+				"container": "tpf-medallion-data"
 			}
 		},
 		"schema": {}
