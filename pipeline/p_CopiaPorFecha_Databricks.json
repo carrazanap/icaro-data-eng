@@ -183,6 +183,9 @@
 				"type": "String"
 			}
 		},
+		"folder": {
+			"name": "CLASE 7"
+		},
 		"annotations": [],
 		"lastPublishTime": "2026-09-01T20:42:02Z"
 	},
