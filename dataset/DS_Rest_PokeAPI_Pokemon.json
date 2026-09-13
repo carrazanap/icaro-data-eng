@@ -5,18 +5,10 @@
 			"referenceName": "LS_Rest_PokeAPI",
 			"type": "LinkedServiceReference"
 		},
-		"parameters": {
-			"PokemonId": {
-				"type": "string"
-			}
-		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": {
-				"value": "@concat('pokemon/', dataset().PokemonId, '/')",
-				"type": "Expression"
-			}
+			"relativeUrl": "pokemon?limit=100&offset=0"
 		},
 		"schema": []
 	},
