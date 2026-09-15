@@ -13,66 +13,12 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/DS_SQL_Pokemon')]",
+			"name": "[concat(parameters('factoryName'), '/ds_blob_clientes_csv')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "LS_SQL_Database",
-					"type": "LinkedServiceReference"
-				},
-				"annotations": [],
-				"type": "AzureSqlTable",
-				"schema": [
-					{
-						"name": "pokemon_id",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "name",
-						"type": "varchar"
-					},
-					{
-						"name": "generation",
-						"type": "varchar"
-					},
-					{
-						"name": "primary_type",
-						"type": "varchar"
-					},
-					{
-						"name": "base_stat_total",
-						"type": "int",
-						"precision": 10
-					},
-					{
-						"name": "is_starter",
-						"type": "bit"
-					},
-					{
-						"name": "is_legendary",
-						"type": "bit"
-					},
-					{
-						"name": "tier_smogon",
-						"type": "varchar"
-					}
-				],
-				"typeProperties": {
-					"schema": "dbo",
-					"table": "pokemon_metadata"
-				}
-			},
-			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/DS_ADLS_Pokemon_CSV')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "LS_ADLS_Storage",
+					"referenceName": "AzureBlobStorage1",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
@@ -80,15 +26,85 @@
 				"typeProperties": {
 					"location": {
 						"type": "AzureBlobStorageLocation",
-						"fileName": "pokemon_metadata.csv",
-						"container": "tpf-medallion-data"
+						"fileName": "dataset_clientes_practica.csv",
+						"container": "landing"
 					},
 					"columnDelimiter": ",",
 					"escapeChar": "\\",
 					"firstRowAsHeader": true,
 					"quoteChar": "\""
 				},
-				"schema": []
+				"schema": [
+					{
+						"name": "id_cliente",
+						"type": "String"
+					},
+					{
+						"name": "nombre",
+						"type": "String"
+					},
+					{
+						"name": "apellido",
+						"type": "String"
+					},
+					{
+						"name": "email",
+						"type": "String"
+					},
+					{
+						"name": "ciudad",
+						"type": "String"
+					},
+					{
+						"name": "fecha_alta",
+						"type": "String"
+					}
+				]
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/ds_sql_clientes_destino')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "id_cliente",
+						"type": "int",
+						"precision": 10
+					},
+					{
+						"name": "nombre",
+						"type": "varchar"
+					},
+					{
+						"name": "apellido",
+						"type": "varchar"
+					},
+					{
+						"name": "email",
+						"type": "varchar"
+					},
+					{
+						"name": "ciudad",
+						"type": "varchar"
+					},
+					{
+						"name": "fecha_alta",
+						"type": "date"
+					}
+				],
+				"typeProperties": {
+					"schema": "dbo",
+					"table": "clientes"
+				}
 			},
 			"dependsOn": []
 		},
@@ -468,7 +484,13 @@
 						},
 						"userProperties": [],
 						"typeProperties": {
-							"notebookPath": "/Users/carrazanap@gmail.com/icaro-data-eng/datatabricks/01_Bronze_Ingesta"
+							"notebookPath": "/Users/carrazanap@gmail.com/icaro-data-eng/datatabricks/01_Bronze_Ingesta",
+							"baseParameters": {
+								"storage_key": {
+									"value": "@pipeline().parameters.storage_key",
+									"type": "Expression"
+								}
+							}
 						},
 						"linkedServiceName": {
 							"referenceName": "LS_AzureDatabricks",
@@ -657,10 +679,7 @@
 				},
 				"annotations": []
 			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/DS_SQL_Pokemon')]",
-				"[concat(variables('factoryId'), '/datasets/DS_ADLS_Pokemon_CSV')]"
-			]
+			"dependsOn": []
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/p_CopiaPorFecha')]",
@@ -1167,7 +1186,10 @@
 				"annotations": [],
 				"lastPublishTime": "2026-08-25T21:02:06Z"
 			},
-			"dependsOn": []
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/ds_blob_clientes_csv')]",
+				"[concat(variables('factoryId'), '/datasets/ds_sql_clientes_destino')]"
+			]
 		}
 	]
 }
