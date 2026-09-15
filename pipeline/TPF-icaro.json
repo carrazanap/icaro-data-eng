@@ -194,11 +194,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"storage_key": {
-				"type": "string"
-			}
-		},
 		"variables": {
 			"IdList": {
 				"type": "Array",
